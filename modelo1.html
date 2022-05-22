@@ -1,41 +1,51 @@
 <div class="cards">
     <div class="card" style="color: aqua;"> card 1</div>
-    <div class="card" style="color: blue"> card 2</div>
-    <div class="card" id="map"></div>
+    <div class="card-map" style="position: relative;">
+        <button class="btn-map">
+            <span class="material-symbols-outlined">
+                open_with
+                </span>
+        </button>
+        <div class="card map" id="map">
+        </div>
+    </div>
+    <div class="card" style="color: blue"> card 2</div>  
     <div class="card" style="color: red"> card 3</div>
     <div class="card" style="color: green"> card 4</div>
     <div class="card" style="color: brown"> card 6</div>
-    <!-- <div class="card" style="color: orange"> card 7</div> -->
 </div>    
 <script>
     $(document).ready(function () {
         $(".card").resizable();
-        $(".card").draggable({
+        $(".card-map").draggable({
             placeholder: "placeholder-card",
+            cancel: ".map",
             cursor: "move"
         });
-        $(".cards").disableSelection();
 
+        $(".card").draggable({
+            placeholder: "placeholder-card",
+            cancel: ".map",
+            cursor: "move"
+        });
 
         var map = L.map('map', {
             center: [-23.482210, -46.552024]
         });
 
         // Get the tile layer from OpenStreetMaps
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {        
         // Specify the maximum zoom of the map
-        maxZoom: 19,
+        maxZoom: 19
 
-        // Set the attribution for OpenStreetMaps
-        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
         // Set the view of the map
         // with the latitude, longitude and the zoom value
-        map.setView([-23.482210, -46.552024], 16);
+        map.setView([-23.482210, -46.552024], 12);
 
-        var marker = L.marker([-23.482210, -46.552024]).addTo(map);
+        var marker = L.marker([-23.482210, -46.552024] ).addTo(map);
+        var marker = L.marker([-23.47042, -46.543496 ]).addTo(map);
 
     })
 </script>
