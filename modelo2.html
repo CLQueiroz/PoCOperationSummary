@@ -1,6 +1,6 @@
 <div class="cards">
-    <div class="card" style="color: aqua;"> card 1</div>
-    <div style="position: relative;">
+    <div class="card" style="color: aqua;" id="item1"> card 1</div>
+    <div style="position: relative;" id="item2">
         <button class="btn-map">
             <span class="material-symbols-outlined">
                 open_with
@@ -9,10 +9,10 @@
         <div class="card map" id="map">
         </div>
     </div>
-    <div class="card" style="color: blue"> card 2</div>  
-    <div class="card" style="color: red"> card 3</div>
-    <div class="card" style="color: green"> card 4</div>
-    <div class="card" style="color: brown"> card 6</div>
+    <div class="card" style="color: blue" id="item3"> card 2</div>  
+    <div class="card" style="color: red" id="item4"> card 3</div>
+    <div class="card" style="color: green" id="item5"> card 4</div>
+    <div class="card" style="color: brown" id="item6"> card 6</div>
 </div>    
 <script>
     $(document).ready(function () {
@@ -20,7 +20,11 @@
         $(".cards").sortable({
             placeholder: "placeholder-card",
             cancel: ".map",
-            cursor: "move"
+            cursor: "move",
+            update: function(event, ui){
+                var newOder = $(this).sortable('toArray').toString();
+                console.log(newOder);
+            }
         });
         $(".cards").disableSelection();
 
