@@ -7,6 +7,8 @@ body { padding: 1rem; }
     margin: 0 auto;
     display: grid;
     grid-gap: 1rem;
+    padding: 20px;
+    background-color: #FFF;
   }
 
 .card {
@@ -68,5 +70,19 @@ body { padding: 1rem; }
 
 .btn-map span{
   font-size: 32px;
+  color: #897e7e;
+}
+
+.btn-fullscreen {
+  background-color: transparent;
+  border: none;
+  font-size: 31px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.btn-fullscreen span {
+  font-size: 36px;
   color: #897e7e;
 }

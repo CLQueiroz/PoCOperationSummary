@@ -1,4 +1,7 @@
-<div class="cards">
+<button class="btn-fullscreen" style="text-align: center"><span class="material-symbols-outlined">
+    fullscreen
+    </span></button>
+<div class="cards" id="fullcard">
     <div class="card" style="color: aqua;" id="item1"> 
         <button>X</button>
         card 1</div>
@@ -67,7 +70,16 @@
 
         var marker = L.marker([-23.482210, -46.552024] ).addTo(map);
         var marker = L.marker([-23.47042, -46.543496 ]).addTo(map);
-        
 
+        $(".btn-fullscreen").click(function () {
+            var elem = document.getElementById("fullcard");
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+        })
     })
 </script>
