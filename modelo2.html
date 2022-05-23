@@ -1,5 +1,7 @@
 <div class="cards">
-    <div class="card" style="color: aqua;" id="item1"> card 1</div>
+    <div class="card" style="color: aqua;" id="item1"> 
+        <button>X</button>
+        card 1</div>
     <div style="position: relative;" id="item2">
         <button class="btn-map">
             <span class="material-symbols-outlined">
@@ -9,14 +11,33 @@
         <div class="card map" id="map">
         </div>
     </div>
-    <div class="card" style="color: blue" id="item3"> card 3</div>  
-    <div class="card" style="color: red" id="item4"> card 3</div>
-    <div class="card" style="color: green" id="item5"> card 4</div>
-    <div class="card" style="color: brown" id="item6"> card 6</div>
+    <div class="card" style="color: blue" id="item3">
+        <button>X</button>
+        card 3</div>  
+    <div class="card" style="color: red" id="item4"> 
+        <button>X</button>
+        card 4</div>
+    <div class="card" style="color: green" id="item5"><button>X</button> card 4</div>
+    <div class="card" style="color: brown" id="item6"> <button>X</button> card 6</div>
 </div>    
 <script>
     $(document).ready(function () {
-        $(".card").resizable();
+        $(".card button").click(function () {
+            var $this = $(this);
+            $this.parents(".card").hide();
+        })
+        $(".card").resizable({
+            handles: "n,s,w,e",
+            minHeight: 178,
+            maxHeight: 360,
+            minWidth: 350,
+            maxWidth: 784,
+            stop: function (event, ui ){
+                console.log(ui.element.attr("id"));
+                console.log(`width: ${ui.size.width}`)
+                console.log(`height: ${ui.size.height}`)
+            }
+        });
         $(".cards").sortable({
             placeholder: "placeholder-card",
             cancel: ".map",
@@ -24,7 +45,7 @@
             update: function(event, ui){
                 var newOder = $(this).sortable('toArray').toString();
                 console.log(newOder);
-            }
+            }            
         });
         $(".cards").disableSelection();
 
