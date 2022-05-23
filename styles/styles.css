@@ -22,7 +22,9 @@ body { padding: 1rem; }
   font-size: 36px;
   height: 178px;
   position: relative;
+  
 }
+
 
 .card button {
   position: absolute;
